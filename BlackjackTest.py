@@ -57,7 +57,6 @@ def playAgain():
     again = input("Do you want to play again? (Y/N) : ")
     if again == "y":
         game()
-
     else:
         print("Bye!\n")
         exit()
@@ -77,9 +76,10 @@ def game():
     Dealerhand = Deal(deck)
     Playerhand = Deal(deck)
     print("Your hands hand is : "+ str(Playerhand[0]) +" and "+ str(Playerhand[1]) + " which totals to " + str(Total(Playerhand)) + "\n Dealers first card is: " + str(Dealerhand[0])+"\n")
+    
     blackjackCheckedResult = checkBlackjack(Playerhand, Dealerhand)
     if blackjackCheckedResult == 1:
-        print("You have a blackjack! \n")
+        print("You have a blackjack and dealer's second card is : "+ str(Dealerhand[-1])+" so you WIN!\n")
         playAgain()
     elif blackjackCheckedResult == 2:
         while checkBust(Playerhand)!=True:
@@ -91,7 +91,7 @@ def game():
                     print("Player Bust!\n")
                     playAgain()
             elif choice == "stand":
-                print("Dealers second card is: " + str(Dealerhand[1]) + " and Dealers hand totals to " + str(Total(Dealerhand)) + "!\n")
+                print("Dealer's second card is: " + str(Dealerhand[1]) + " and Dealers hand totals to " + str(Total(Dealerhand)) + "!\n")
                 print("Dealer has a blackjack! You LOOSE!\n")
                 playAgain()
         
@@ -128,10 +128,7 @@ def game():
                     playAgain()
                 else:
                     print("Player totals to more than the Dealer. You Win!\n")
-                    playAgain()
-
-                      
-                
+                    playAgain()              
 
 if __name__ == "__main__":
    game()
