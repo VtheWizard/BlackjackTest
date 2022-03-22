@@ -99,7 +99,7 @@ def game():
         print("Both Player and Dealer have a blackjack! It's a TIE!\n")
         playAgain()
     else: 
-        print("No Blackjacks.\n")
+        print("No Blackjacks... at least yet.\n")
         while checkBust(Playerhand)!=True:
             choice = input("Choose to hit or stand\n")
             if choice == "hit":
@@ -117,12 +117,14 @@ def game():
                     if checkBust(Dealerhand) == True:
                         print("Dealer Bust and You WIN\n")
                         playAgain()
-                    elif Total(Dealerhand) >= 17 and checkBust(Dealerhand) == False:
-                        print("Dealer totals to 17 or more and will not hit anymore.\n")
+                    elif Total(Dealerhand) > 17 and checkBust(Dealerhand) == False:
+                        print("Dealer totals to more than 17 and will not hit anymore.\n")
+                    elif Total(Dealerhand) == 17 and checkBust(Dealerhand == False):
+                        print("Dealer totals to 17 and will not hit anymore.\n")
                 elif Total(Dealerhand) >= 17 and checkBust(Dealerhand) == False:
                     print("Dealer totals to 17 or more and will not hit anymore.\n")
                 if Total(Playerhand) <= Total(Dealerhand):
-                    print("Player totals to less than the Dealer. You loose!\n")
+                    print("Player totals to "+ str(Total(Playerhand))+ " and the Dealer totals to " + str(Total(Dealerhand)) + ". You loose!\n")
                     playAgain()
                 else:
                     print("Player totals to more than the Dealer. You Win!\n")
