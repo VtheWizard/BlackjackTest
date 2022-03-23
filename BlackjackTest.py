@@ -4,6 +4,7 @@ import os
 deck = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]*4
 Dealerhand = []
 Playerhand = []
+Players = []
 
 def Deal(deck):
     hand = []
@@ -76,7 +77,7 @@ def game():
     Dealerhand = Deal(deck)
     Playerhand = Deal(deck)
     print("Your hands hand is : "+ str(Playerhand[0]) +" and "+ str(Playerhand[1]) + " which totals to " + str(Total(Playerhand)) + "\n Dealers first card is: " + str(Dealerhand[0])+"\n")
-    
+    #check surrender, split and everything else if you even can be assed to implement 
     blackjackCheckedResult = checkBlackjack(Playerhand, Dealerhand)
     if blackjackCheckedResult == 1:
         print("You have a blackjack and dealer's second card is : "+ str(Dealerhand[-1])+" so you WIN!\n")
@@ -123,15 +124,31 @@ def game():
                         print("Dealer totals to 17 and will not hit anymore.\n")
                 elif Total(Dealerhand) >= 17 and checkBust(Dealerhand) == False:
                     print("Dealer totals to 17 or more and will not hit anymore.\n")
-                if Total(Playerhand) <= Total(Dealerhand):
-                    print("Player totals to "+ str(Total(Playerhand))+ " and the Dealer totals to " + str(Total(Dealerhand)) + ". You loose!\n")
-                    playAgain()
-                else:
-                    print("Player totals to more than the Dealer. You Win!\n")
-                    playAgain()              
+                    if Total(Playerhand) <= Total(Dealerhand):
+                        print("Player totals to "+ str(Total(Playerhand))+ " and the Dealer totals to " + str(Total(Dealerhand)) + ". You loose!\n")
+                        playAgain()
+                    else:
+                        print("Player totals to more than the Dealer. You Win!\n")
+                        playAgain()
 
 if __name__ == "__main__":
-   game()
+    while True:
+        playercount = input("How many players want to play? (1-2)")
+        try:
+            val = int(playercount)
+        except ValueError:
+            print("Please enter a number between 1 and 2.")
+        else:
+            break
+    pcount = int(playercount)
+    if pcount == 1:
+        game()
+    elif pcount == 2:
+        print("multiplayer not implemented yet lol")
+        exit()
+    else:
+        print("multiplayer not implemented yet lol")
+        exit()
 
 
 
