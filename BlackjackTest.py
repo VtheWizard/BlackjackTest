@@ -98,7 +98,7 @@ def game():
 
             if choice == "hit":
                 hit(Playerhand)
-                print("You got " + str(Playerhand[-1]) + "and totals to "+ str(Total(Playerhand)) + "!\n")
+                print("\nYou got " + str(Playerhand[-1]) + "and totals to "+ str(Total(Playerhand)) + "!\n")
 
                 if checkBust(Playerhand) == True:
                     print("Player Bust!\n")
